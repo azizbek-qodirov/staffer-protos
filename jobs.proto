@@ -4,38 +4,47 @@ package staff;
 
 option go_package = "genprotos/";
 
-import "void.proto";
+import "staffer-protos/void.proto";
 
 
-// Job Applications table
-message JobApplication {
-  string id = 1;
-  string candidate_id = 2;
-  string vacancy_id = 3;
-  string resume = 4;
-  string status = 5;
-  string created_at = 6;
-  string updated_at = 7;
-}
+service JobService {
+  rpc Create(JobApplicationCreate) returns (Void);
+  rpc Get(Byid) returns (JobApplitcationGetRes);
+  rpc Update(JobApplicationUpdate) returns (Void);
+  rpc Delete(Byid) returns (Void);
+  rpc GetAll(JobApplicationGetAll) returns (JobApplicationGetAllRes);
+};
 
-// Job Application Steps table
-message JobApplicationStep {
-  string id = 1;
-  string job_application_id = 2;
-  string name = 3;
+message JobApplicationCreate {
+  string candidate_id = 1;
+  string vacancy_id = 2;
+  string resume_id = 3;
   string status = 4;
-  string comments = 5;
-  string timestamp = 6;
-}
+};
 
-// Job Offers table
-message JobOffer {
+message JobApplitcationGetRes {
   string id = 1;
   string candidate_id = 2;
   string vacancy_id = 3;
-  string details = 4;
+  string resume_id = 4;
   string status = 5;
-  string created_at = 6;
-  string updated_at = 7;
-}
+};
 
+message JobApplicationUpdate {
+  string id = 1;
+  string resume_id = 4;
+  string status = 5;
+};
+
+message JobApplicationGetAll {
+  string candidate_id = 1;
+  string vacancy_id = 2;
+  string resume_id = 3;
+  string status = 4;
+  Pagination filter = 5;
+};
+
+message JobApplicationGetAllRes {
+  JobApplitcationGetRes JobApplications = 1;
+  bool success = 2;
+};
