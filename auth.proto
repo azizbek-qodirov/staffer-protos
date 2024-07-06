@@ -9,7 +9,7 @@ import "staffer-protos/void.proto";
 
 service AuthService {
   rpc Register(CreateUser) returns (UserResponse);
-  rpc Login(LoginRequest) returns (UserResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
   rpc Update(UpdateUser) returns (Void);
   rpc UpdateForAdmin(UpdateUserForAdmin) returns (Void);
   rpc Logout(LogoutRequest) returns (Void);
@@ -24,6 +24,7 @@ message CreateUser {
   float rating = 5;
   string role = 6;
   string token = 7;
+  string exp=8;
 };
 message UserResponse{
     bool success = 1;
@@ -66,3 +67,12 @@ message RefreshTokenResponse {
     string message = 2;
     string token = 3;
 };
+
+message LoginResponse {
+    bool success = 1;
+    string message = 2;
+    string access_token = 3;
+    string refresh_token = 4;
+    string role =5;
+
+}
