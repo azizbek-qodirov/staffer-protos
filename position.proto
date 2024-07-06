@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package staff;
+
+option go_package = "genprotos/";
+
+// import "void.proto";
+
+
+
+message Position {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    string department_id = 4;
+    string created_at = 5;
+    string updated_at = 6;
+  }
+  

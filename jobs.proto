@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package staff;
+
+option go_package = "genprotos/";
+
+import "void.proto";
+
+
+// Job Applications table
+message JobApplication {
+  string id = 1;
+  string candidate_id = 2;
+  string vacancy_id = 3;
+  string resume = 4;
+  string status = 5;
+  string created_at = 6;
+  string updated_at = 7;
+}
+
+// Job Application Steps table
+message JobApplicationStep {
+  string id = 1;
+  string job_application_id = 2;
+  string name = 3;
+  string status = 4;
+  string comments = 5;
+  string timestamp = 6;
+}
+
+// Job Offers table
+message JobOffer {
+  string id = 1;
+  string candidate_id = 2;
+  string vacancy_id = 3;
+  string details = 4;
+  string status = 5;
+  string created_at = 6;
+  string updated_at = 7;
+}
+
