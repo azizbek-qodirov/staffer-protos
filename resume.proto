@@ -12,7 +12,7 @@ service ResumeService {
   rpc Get(Byid) returns (ResumeGetRes);
   rpc Update(ResumeUpdate) returns (Void);
   rpc Delete(Byid) returns (Void);
-  rpc GetAll(ResumeGetAll) returns (JobApplicationGetAllRes);
+  rpc GetAll(ResumeGetAll) returns (ResumeGetAllRes);
 };
 
 message ResumeCreate {
@@ -40,7 +40,7 @@ message ResumeGetAll {
   Pagination filter = 5;
 };
 
-message JobApplicationGetAllRes {
+message ResumeGetAllRes {
   ResumeGetRes Resumes = 1;
   bool success = 2;
 };
