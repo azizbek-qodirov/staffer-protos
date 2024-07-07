@@ -4,7 +4,7 @@ package staff;
 
 option go_package = "genprotos/";
 
-import "staffer-protos/void.proto";
+import "void.proto";
 
 
 service JobService {
