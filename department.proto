@@ -8,20 +8,26 @@ import "void.proto";
 
 
 service DepartmentService {
-  rpc Create(DepartmentCreate) returns (Void);
-  rpc GetByID(Byid) returns (DepartmentGetResUpdateReq);
-  rpc Update(DepartmentGetResUpdateReq) returns (Void);
-  rpc Delete(Byid) returns (Void);
+  rpc Create(DepartmentCreateReq) returns (DepartmentRes);
+  rpc GetById(Byid) returns (DepartmentGetByIdRes);
   rpc GetAll(DepartmentGetAllReq) returns (DepartmentGetAllRes);
+  rpc Update(DepartmentUpdateReq) returns (DepartmentRes);
+  rpc Delete(Byid) returns (Void);
 };
 
-message DepartmentGetResUpdateReq {
+message DepartmentRes{
   string id = 1;
   string name = 2;
   string company_id = 3;
-};
+}
 
-message DepartmentCreate {
+message DepartmentUpdateReq{
+  string id = 1;
+  string name = 2;
+  string company_id = 3;
+}
+
+message DepartmentCreateReq {
   string name = 1;
   string company_id = 2;
 };
@@ -29,10 +35,13 @@ message DepartmentCreate {
 message DepartmentGetAllReq {
   string name = 1;
   string company_id = 2;
-  Pagination Pagination = 3;
+  Pagination filter = 3;
 };
 
+message DepartmentGetByIdRes{
+  DepartmentRes department = 1;
+}
+
 message DepartmentGetAllRes {
-  DepartmentGetResUpdateReq Departments = 1;
-  bool success = 2;
+  repeated DepartmentRes departments = 1;
 };

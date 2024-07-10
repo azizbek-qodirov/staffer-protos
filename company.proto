@@ -8,21 +8,21 @@ import "void.proto";
 
 
 service CompanyService {
-  rpc Create(CreateCompany) returns (Void);
-  rpc GetAll(GetAllCompanyRequest) returns (GetAllCompanyResponse);
-  rpc Update(CompanyUpdate) returns (Void);
+  rpc Create(CompanyCreateReq) returns (CompanyRes);
+  rpc GetById(Byid) returns (CompanyGetByIdRes);
+  rpc GetAll(CompanyGetAllReq) returns (CompanyGetAllRes);
+  rpc Update(CompanyUpdateReq) returns (CompanyRes);
   rpc Delete(Byid) returns (Void);
-  rpc GetById(Byid) returns (GetByID);
 }
 
-message CreateCompany {
-    string name = 1;
-    string address = 2;
-    string industry = 3;
-    string website = 4;
-  }
+message CompanyCreateReq {
+  string name = 1;
+  string address = 2;
+  string industry = 3;
+  string website = 4;
+}
 
-message CompanyUpdate{
+message CompanyRes{
   string id = 1;
   string name = 2;
   string address = 3;
@@ -30,25 +30,26 @@ message CompanyUpdate{
   string website = 5;
 }
 
-message GetAllCompanyRequest{
+message CompanyUpdateReq{
+  string id = 1;
+  string name = 2;
+  string address = 3;
+  string industry = 4;
+  string website = 5;
+}
+
+message CompanyGetAllReq{
   string name = 1;
   string address = 2;
   string industry = 3;
   string website = 4;
-  string company_id =5;
-  Pagination filter=6;
+  Pagination filter=5;
 }
 
-message GetAllCompanyResponse{
-  GetAllCompanyRequest Companies =1;
-  bool success = 2;
+message CompanyGetAllRes{
+  repeated CompanyRes companies =1;
 }
 
-message GetByID {
-  string name = 1;
-  string address = 2;
-  string industry = 3;
-  string website = 4;
-  string company_id =5;
-  bool success =6;
+message CompanyGetByIdRes {
+  CompanyRes company = 1;
 }
