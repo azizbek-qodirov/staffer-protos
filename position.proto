@@ -34,9 +34,8 @@ message PositionUpdateReq{
 }
 
 message PositionGetAllReq{
-  string id = 1;
-  string department_id = 2;
-  Pagination filter = 3;
+  string department_id = 1;
+  Pagination filter = 2;
 }
 
 message PositionGetByIdRes{
