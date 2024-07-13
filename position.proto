@@ -4,39 +4,45 @@ package staff;
 
 option go_package = "genprotos/";
 
-import "staffer-protos/void.proto";
+//import "staffer-protos/void.proto";
+import "void.proto";
 
 service PositionService{
-  rpc Create (CreatePosition) returns (Void);
-  rpc Update (UpdatePosition) returns (Void);
+  rpc Create (PositionCreateReq) returns (PositionRes);
+  rpc GetById(Byid) returns (PositionGetByIdRes);
+  rpc Update (PositionUpdateReq) returns (PositionRes);
   rpc Delete(Byid) returns (Void);
-  rpc GetAll(GetAllPositionsRequest) returns (GetAllPositionResponse);
+  rpc GetAll(PositionGetAllReq) returns (PositionGetAllRes);
 }
 
-message CreatePosition {
-    string title = 1;
-    string description = 2;
-    string department_id = 3;
+message PositionCreateReq {
+  string title = 1;
+  string description = 2;
+  string department_id = 3;
 }
 
-
-message UpdatePosition{
+message PositionRes{
   string id = 1;
   string title = 2;
   string description = 3;
   string department_id = 4;
 }
 
-message GetAllPositionsRequest{
-  string position_id = 1;
-  string user_id = 2;
-  string vacansy_id = 3;
-}
-
-message GetAllPositionResponse{
+message PositionUpdateReq{
   string id = 1;
   string title = 2;
   string description = 3;
-  string department_id = 4;
-  bool success =5;
+}
+
+message PositionGetAllReq{
+  string department_id = 1;
+  Pagination filter = 2;
+}
+
+message PositionGetByIdRes{
+  PositionRes position = 1;
+}
+
+message PositionGetAllRes{
+  repeated PositionRes positions = 1;
 }
