@@ -45,6 +45,6 @@ message JobApplicationGetAll {
 };
 
 message JobApplicationGetAllRes {
-  JobApplitcationGetRes JobApplications = 1;
+  repeated JobApplitcationGetRes JobApplications = 1;
   bool success = 2;
 };

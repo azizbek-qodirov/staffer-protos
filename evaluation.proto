@@ -36,6 +36,6 @@ message EvaluationGetAllReq {
 };
 
 message EvaluationGetAllRes {
-  EvaluationUpdate Evaluations = 1;
+  repeated EvaluationUpdate Evaluations = 1;
   bool success = 2;
 };

@@ -43,6 +43,6 @@ message VacancyGetAllReq {
 
 
 message VacancyGetAllRes {
-  VacancyGetResUpdateReq Vacancies = 1;
+  repeated VacancyGetResUpdateReq Vacancies = 1;
   bool success = 2;
 };
