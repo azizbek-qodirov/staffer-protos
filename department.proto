@@ -11,7 +11,7 @@ import "staffer-protos/void.proto";
 
 service DepartmentService {
   rpc Create(DepartmentCreateReq) returns (DepartmentRes);
-  rpc GetByID(Byid) returns (DepartmentGetResUpdateReq);
+  rpc GetByID(Byid) returns (DepartmentGetByIdRes);
   rpc Update(DepartmentUpdateReq) returns (DepartmentRes);
   rpc Delete(Byid) returns (Void);
   rpc GetAll(DepartmentGetAllReq) returns (DepartmentGetAllRes);
